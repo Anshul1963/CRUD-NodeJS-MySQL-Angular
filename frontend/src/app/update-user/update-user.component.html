@@ -1,0 +1,34 @@
+<div class="user-detail">
+  <form  (ngSubmit)="onSubmit()" >
+      <div class="form-title">
+        <h2>EDIT DETAILS</h2>
+      </div>
+      <input type="text" class="form-control"  placeholder="Full name" name="name" required [(ngModel)]="user.name">
+
+      <input type="text" class="form-control"  placeholder="E-mail" name="email" required [(ngModel)]="user.email"> 
+      
+      <input type="text" class="form-control"  placeholder="Mobile no." name="mobile" required [(ngModel)]="user.mobile">
+      
+      <input type="text" class="form-control"  placeholder="Permanent Address" name="address" required [(ngModel)]="user.address">
+
+      <select id="state" name="state" required [(ngModel)]="user.state">
+        <option value="Delhi" name="state">Delhi</option>
+        <option value="Rajasthan" name="state">Rajasthan</option>
+        <option value="Punjab" name="state">Punjab</option>
+        <option value="Maharastra" name="state">Maharastra</option>
+      </select>
+
+      <label>Gender</label>
+      <div id="gender">
+        <span><input type="radio" value="Male" name="gender" class="radio" [(ngModel)]="user.gender">Male</span> 
+        <span><input type="radio" value="Female" name="gender" class="radio" [(ngModel)]="user.gender" >Female</span>
+        <span><input type="radio" value="Others" name="gender" class="radio" [(ngModel)]="user.gender" >Others</span>
+      </div>
+
+      <textarea class="form-control" name="message" rows="2" cols="30" placeholder="Message(if any)" required [(ngModel)]="user.message"></textarea>
+
+      <label style="display:inline;">Newsletter:</label>
+      <input type="checkbox" class="form-control" name="newsletter" class="radio" required [(ngModel)]="user.newsletter"><br>
+      
+      <button type="submit">Update</button>
+  </form>

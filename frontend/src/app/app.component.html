@@ -1,0 +1,13 @@
+<nav>
+    <div class="navbar">
+        <h4>CRUD</h4>
+    </div>
+    <ul class="nav-link">
+        <li ><a routerLink="users" routerLinkActive="active" >View</a></li>
+        <li ><a routerLink="add" routerLinkActive="active" >Add</a></li>
+        <!-- <li *ngIf="!login"><a routerLink="login" routerLinkActive="active" >Login</a></li>   -->
+        <li ><a routerLink="logout" (click)="logout()" routerLinkActive="active" >Logout</a></li>
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>

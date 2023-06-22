@@ -1,0 +1,44 @@
+<div class="user-detail">
+  <form (ngSubmit)="onSubmit()" [formGroup] = "addForm">
+      <div class="form-title">
+        <h2>ADD DETAILS</h2>
+      </div>
+      <input type="text" class ="form-control" formControlName="name" placeholder="Full name" id="name" name="name">
+      <span class="error" *ngIf="name && name.invalid && name.touched">*Invalid Name</span>
+
+      <input type="text" class ="form-control" formControlName="email" placeholder="E-mail address" id="email" name="email"> 
+      <span class="error" *ngIf="email && email.invalid && email.touched">*Invalid Email</span>
+
+      <input type="text" class ="form-control" formControlName="mobile" placeholder="Mobile no." id="mobile" name="mobile">
+      <span class="error" *ngIf="mobile && mobile.invalid && mobile.touched">*Mobile Required(10 Digits)</span>
+
+      <input type="text" class="form-control" formControlName="address" placeholder="Permanent Address" id="address" name="address">
+      <span class="error" *ngIf="address && address.invalid && address.touched">*Address Required</span>
+
+      <select id="state" name="state" formControlName="state">
+        <option value="">Select State</option>
+        <option value="Delhi" name="state">Delhi</option>
+        <option value="Rajasthan" name="state">Rajasthan</option>
+        <option value="Punjab" name="state">Punjab</option>
+        <option value="Maharastra" name="state">Maharastra</option>
+      </select>
+      <span class="error" *ngIf="state && state.invalid && state.touched">*State Required</span>
+
+      <label>Gender</label>
+      <div id="gender">
+        <span><input type="radio" value="Male" name="gender" class="radio" formControlName="gender">Male</span> 
+        <span><input type="radio" value="Female" name="gender" class="radio" formControlName="gender" >Female</span> 
+        <span><input type="radio" value="Others" name="gender" class="radio" formControlName="gender" >Others</span> 
+      </div>
+        
+        <span class="error" *ngIf="gender && gender.invalid">*Select Gender</span> 
+
+      <textarea class="form-control" id="message" formControlName="message" name="message" rows="2" cols="30" placeholder="Message(if any)"></textarea>
+      <span class="error" *ngIf="message && message.invalid && message.touched">*Enter message</span><br>
+
+      <label style="display:inline;">Newsletter:</label>
+      <input type="checkbox" id="newsletter" class="form-control radio" name="newsletter"><br>
+      
+      <button *ngIf="addForm.valid">Submit</button>
+  </form>
+</div>

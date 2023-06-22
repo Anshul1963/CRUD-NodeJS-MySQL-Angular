@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()" [formGroup] = "registration">
+        <div class="title">CREATE</div>
+        <h2>Adventure starts here</h2>
+        <p>Make your user management easy and fun!</p>
+        <span *ngIf="error === 'User Already Existed !'" class="loginErr">Email Already Registered!</span>
+
+        <input type="text" name="email" class ="form-control" formControlName="email" placeholder="Email" class="a"/>
+        <span class="error" *ngIf="email && email.invalid && email.touched">*Email required</span>
+
+        <input type="text" name="userName" class ="form-control" formControlName="userName" placeholder="User Name" class="a"/>
+        <span class="error" *ngIf="userName && userName.invalid && userName.touched">*Username required</span>
+
+        <input type="password" name="password" class ="form-control" formControlName="password" placeholder="Password" class="a"/>
+        <!-- <span class="error" *ngIf="password && password.invalid && password.touched">*Password required</span> -->
+
+        <input type="checkbox" name="agree" class="b">I agree to <a href="#" style="text-decoration:none; color:#9155FD">privacy policy & terms.</a><br>
+        <button type="signup" name="signup">Sign Up</button>
+        <div id="create">Already have an account?&nbsp;<a routerLink="/login" style="text-decoration:none; color:#9155FD">Sign in Instead</a></div> <br>
+        <div class="or">or</div>
+        <div id="links">
+            <a href="#" style="color: rgb(73, 124, 226);"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+            <a href="#" style="color: rgb(29, 161, 242);"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+            <a href="#" style="color: black;"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
+            <a href="#" style="color: rgb(219, 68, 55);"><i class="fa fa-google fa-lg" aria-hidden="true"></i></a>
+        </div>
+    </form>

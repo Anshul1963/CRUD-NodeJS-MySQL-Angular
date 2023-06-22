@@ -1,0 +1,144 @@
+.container{
+    background-color: #F4F5F4;
+    color:rgba(58, 53, 65, 0.87);
+}
+.container p {
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-align: center;
+    padding-top: 15px;
+    margin-bottom: 15px;
+} 
+table{
+    margin:auto;
+    width: 95%;
+    box-shadow:0px 2px 10px 0px rgb(58 53 65 / 10%);
+    border: none;
+    border-collapse: collapse;
+}
+td,th{
+    border-collapse: collapse;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    font-size:22px;
+    text-align:left;
+    padding:15px 5px;
+}
+th button{
+    font-size:22px;
+    font-weight: 600;
+    padding: 0;
+    border: none;
+    color:rgba(58, 53, 65, 0.87);
+}
+th button:hover{
+    color: black;
+}
+.table-heading{
+    height:40px;
+    font-size: 20px;
+}
+.table-data{
+    text-align:center;
+}
+td{
+    font-size:17px;
+    padding:7px 5px;
+    text-align: left;
+}
+.mess{
+    outline:none;    
+    max-width:25px;
+}
+.edit-btn{
+    font-size: 18px;
+    font-weight: 500;
+    background-color:white;
+    border-color: #198754;
+    border-radius:5px;
+    padding: 3px 5px;
+    color:#198754;
+    cursor: pointer;
+}
+.edit-btn:hover{
+    background-color: #198754;
+    color: white;
+}
+.del-btn{
+    font-size:18px;
+    font-weight: 500;
+    background-color:white;
+    border-radius:5px;
+    padding: 3px 5px;
+    color:#dc3545;
+    border-color: #dc3545;
+    cursor: pointer;
+}
+.del-btn:hover{
+    background-color: #dc3545;
+    color: white;
+}
+.page-num{
+    margin-top:30px;
+}
+.pagination{
+    display:flex;
+    justify-content:center;  
+    height: 40px; 
+}
+.pagination li{
+    list-style:none;
+    margin-right:10px;   
+}
+.pagination li button{
+    text-decoration:none;
+    border-color: #212529;
+    font-size:20px;
+    background-color:white;
+    color:#212529;
+    border-radius:5px;
+    cursor: pointer;
+}
+
+.pagination li button:hover{
+    background-color: #212529;
+    color:white;
+}
+.page-number{
+    font-size:20px;
+    color: black;
+}
+
+form{
+    height:40px;
+    margin: 0 75px 15px 40px;
+}
+form input{
+    padding:5px 10px;
+    font-size:17px;
+    border:1px solid #ddd;
+    border-radius:30px;
+    background: white;
+}
+form input:focus {
+    outline: none;
+    border:2px solid #9155FD;
+}
+form button,select{
+    padding:5px;
+    font-size:15px;
+}
+form button{
+    cursor: pointer;
+}
+#searchBy, button{
+    border:1px solid #ddd;
+    background-color:transparent;
+    border-radius:5px;
+}
+#searchBy:focus{
+    outline: none;
+    border:2px solid #9155FD;
+}

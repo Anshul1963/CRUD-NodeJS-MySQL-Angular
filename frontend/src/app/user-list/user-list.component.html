@@ -1,0 +1,64 @@
+<div class="container">
+    <p>LIST OF USERS</p>
+
+ <!-- SEARCH BOX -->
+    <form [formGroup] ="search">
+        <select id="searchBy" name="searchBy" formControlName="searchBy" >
+            <option value="">Search By</option>
+            <option value="name" name="searchBy">Name</option>
+            <option value="email" name="searchBy">Email</option>
+            <option value="mobile" name="searchBy">Mobile</option>
+            <option value="address" name="searchBy">Address</option>
+            <option value="state" name="searchBy">State</option>
+            <option value="gender" name="searchBy">Gender</option>
+            <option value="message" name="searchBy">Message</option>
+        </select>
+        <input type="text" class ="form-control" placeholder="Search" formControlName="searchInput" (input)="onSubmit()">
+    </form>
+
+
+    <table class="table">
+        <thead>
+            <tr class="table-heading">
+                <th style="width:10%"><button (click)="sort('name',nameNextOrder)">NAME</button><span *ngIf="nameNextOrder == 'asc' && SortBy == 'name' ">↓</span><span *ngIf="nameNextOrder == 'desc' && SortBy == 'name'">↑</span></th>
+
+                <th style="width:17%"><button (click)="sort('email',emailNextOrder)">EMAIL</button><span *ngIf="emailNextOrder == 'asc' && SortBy == 'email' ">↓</span><span *ngIf="emailNextOrder == 'desc' && SortBy == 'email'">↑</span></th>
+
+                <th style="width:08%"><button (click)="sort('mobile',mobileNextOrder)">MOBILE</button><span *ngIf="mobileNextOrder == 'asc' && SortBy == 'mobile' ">↓</span><span *ngIf="mobileNextOrder == 'desc' && SortBy == 'mobile'">↑</span></th>
+
+                <th style="width:12%"><button (click)="sort('address',addressNextOrder)">ADDRESS</button><span *ngIf="addressNextOrder == 'asc' && SortBy == 'address' ">↓</span><span *ngIf="addressNextOrder == 'desc' && SortBy == 'address'">↑</span></th>
+
+                <th style="width:08%"><button (click)="sort('state',stateNextOrder)">STATE</button><span *ngIf="stateNextOrder == 'asc' && SortBy == 'state' ">↓</span><span *ngIf="stateNextOrder == 'desc' && SortBy == 'state'">↑</span></th>
+
+                <th style="width:10%"><button (click)="sort('gender',genderNextOrder)">GENDER</button><span *ngIf="genderNextOrder == 'asc' && SortBy == 'gender' ">↓</span><span *ngIf="genderNextOrder == 'desc' && SortBy == 'gender'">↑</span></th>
+
+                <th style="width:18%"><button (click)="sort('message',messageNextOrder)">MESSAGE</button><span *ngIf="messageNextOrder == 'asc' && SortBy == 'message' ">↓</span><span *ngIf="messageNextOrder == 'desc' && SortBy == 'message'">↑</span></th>
+                <th style="width:12%">ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-data" *ngFor="let user of users">
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.mobile}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.state}}</td>
+                <td>{{user.gender}}</td>
+                <td id="message" class="mess">{{user.message}}</td>
+                <td>
+                    <button (click)="updateUser(user.id)" class="edit-btn">Edit</button>&nbsp;
+                    <button (click)="deleteUser(user.id)" class="del-btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+ <!-- PAGINATION -->
+    <div class="page-num">
+        <ul class="pagination" >
+            <li><button (click)="reloadDataPrev()">Prev</button></li>
+            <li class="page-number">{{pageNo}}</li>
+            <li><button (click)="reloadDataNext()">Next</button></li>
+        </ul>
+    </div>
+</div>
