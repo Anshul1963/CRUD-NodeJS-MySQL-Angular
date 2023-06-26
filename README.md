@@ -5,3 +5,4 @@ To run this project:
 2. Then run "ng serve --open" in terminal.
 2. Open another terminal in backend folder and run "npm install".
 4. Then run "nodemon server.js" in terminal.
+5. Make your own db in local system.
