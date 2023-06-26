@@ -11,16 +11,18 @@
         <span class="error" *ngIf="userName && userName.invalid && userName.touched">*Username required</span>
 
         <input type="password" name="password" class ="form-control" formControlName="password" placeholder="Password" class="a"/>
-        <!-- <span class="error" *ngIf="password && password.invalid && password.touched">*Password required</span> -->
+        <span class="error" *ngIf="password && password.invalid && password.touched">*Password required</span><br>
 
-        <input type="checkbox" name="agree" class="b">I agree to <a href="#" style="text-decoration:none; color:#9155FD">privacy policy & terms.</a><br>
+        <input type="checkbox" name="agree" class="b form-control" formControlName="agree">I agree to <a routerLink='' style="text-decoration:none; color:#9155FD">privacy policy & terms.</a>
+        <span class="error" *ngIf="privacy == ''">*Check</span>
+
         <button type="signup" name="signup">Sign Up</button>
         <div id="create">Already have an account?&nbsp;<a routerLink="/login" style="text-decoration:none; color:#9155FD">Sign in Instead</a></div> <br>
         <div class="or">or</div>
         <div id="links">
-            <a href="#" style="color: rgb(73, 124, 226);"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
-            <a href="#" style="color: rgb(29, 161, 242);"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-            <a href="#" style="color: black;"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
-            <a href="#" style="color: rgb(219, 68, 55);"><i class="fa fa-google fa-lg" aria-hidden="true"></i></a>
+            <a routerLink="" style="color: rgb(73, 124, 226);"><i class="fa fa-facebook-square fa-lg" aria-hidden="true"></i></a>
+            <a routerLink="" style="color: rgb(29, 161, 242);"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
+            <a routerLink="" style="color: black;"><i class="fa fa-github fa-lg" aria-hidden="true"></i></a>
+            <a routerLink="" style="color: rgb(219, 68, 55);"><i class="fa fa-google fa-lg" aria-hidden="true"></i></a>
         </div>
     </form>

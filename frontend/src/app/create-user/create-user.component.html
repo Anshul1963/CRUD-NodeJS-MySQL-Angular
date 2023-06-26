@@ -1,5 +1,5 @@
 <div class="user-detail">
-  <form (ngSubmit)="onSubmit()" [formGroup] = "addForm">
+  <form (submit)="onSubmit($event)" [formGroup] = "addForm" enctype="multipart/form-data">
       <div class="form-title">
         <h2>ADD DETAILS</h2>
       </div>
@@ -35,6 +35,9 @@
 
       <textarea class="form-control" id="message" formControlName="message" name="message" rows="2" cols="30" placeholder="Message(if any)"></textarea>
       <span class="error" *ngIf="message && message.invalid && message.touched">*Enter message</span><br>
+
+      <label style="display: inline;"> Choose file:</label>
+      <input type="file" name="image" class="form-control" formControlName="image" (change)="uploadFile($event)">
 
       <label style="display:inline;">Newsletter:</label>
       <input type="checkbox" id="newsletter" class="form-control radio" name="newsletter"><br>

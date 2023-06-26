@@ -4,12 +4,16 @@
         <h2>EDIT DETAILS</h2>
       </div>
       <input type="text" class="form-control"  placeholder="Full name" name="name" required [(ngModel)]="user.name">
+      <span class="Error">{{nameErr}}</span>
 
       <input type="text" class="form-control"  placeholder="E-mail" name="email" required [(ngModel)]="user.email"> 
-      
+      <span class="Error">{{emailErr}}</span>
+
       <input type="text" class="form-control"  placeholder="Mobile no." name="mobile" required [(ngModel)]="user.mobile">
-      
+      <span class="Error">{{mobileErr}}</span>
+
       <input type="text" class="form-control"  placeholder="Permanent Address" name="address" required [(ngModel)]="user.address">
+      <span class="Error">{{addressErr}}</span>
 
       <select id="state" name="state" required [(ngModel)]="user.state">
         <option value="Delhi" name="state">Delhi</option>

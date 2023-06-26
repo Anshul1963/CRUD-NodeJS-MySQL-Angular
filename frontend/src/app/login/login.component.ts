@@ -27,16 +27,20 @@ export class LoginComponent implements OnInit {
 
   onSubmit()
   {
-      this.http.post("http://localhost:8080/api/user/login/"+this.login.value.userName+"/"+this.login.value.password).subscribe(data =>{
-      console.log(data);
-      this.loginStatus = data.result;
-      console.log();
-      if(data.result === "loggedIn"){
-        sessionStorage.setItem('loggedIn', 'true');
-        console.log("loggedIn");
-         this.router.navigate(['/users']);
+      if(this.login.value.userName == "" || this.login.value.password == ""){
+        this.loginStatus = "Empty Fields";
       }
-    },error=>console.log(error));
+      else{
+        this.http.post("http://localhost:8080/api/user/login/"+this.login.value.userName+"/"+this.login.value.password,'').subscribe((data:any) =>{
+          console.log(data);
+          this.loginStatus = data.result;
+          console.log();
+          if(data.result === "loggedIn"){
+            sessionStorage.setItem('loggedIn', 'true');
+            console.log("loggedIn");
+            this.router.navigate(['/users']);
+          }
+        },error=>console.log(error));
+      }
   }
-
 }

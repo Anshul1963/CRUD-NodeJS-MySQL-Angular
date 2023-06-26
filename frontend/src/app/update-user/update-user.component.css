@@ -73,7 +73,7 @@ button[type=submit] {
 button[type=submit]:hover {
     background-color:#814b9b;
 }
-.error{
+.Error{
     color: #FF0001;
 }
 #gender span{

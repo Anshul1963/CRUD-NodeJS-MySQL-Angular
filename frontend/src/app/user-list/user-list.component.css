@@ -1,6 +1,7 @@
 .container{
     background-color: #F4F5F4;
     color:rgba(58, 53, 65, 0.87);
+    height: 100vh;
 }
 .container p {
     font-size: 35px;
@@ -32,6 +33,7 @@ th button{
     padding: 0;
     border: none;
     color:rgba(58, 53, 65, 0.87);
+    cursor: pointer;
 }
 th button:hover{
     color: black;
@@ -113,9 +115,10 @@ td{
 
 form{
     height:40px;
-    margin: 0 75px 15px 40px;
+    margin: 0 75px 5px 40px;
 }
 form input{
+    margin-left: 5px;
     padding:5px 10px;
     font-size:17px;
     border:1px solid #ddd;
@@ -141,4 +144,25 @@ form button{
 #searchBy:focus{
     outline: none;
     border:2px solid #9155FD;
+}
+#img{
+    height: 50px;
+    width: 50px;
+}
+
+
+#fullpage {
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  width: 80%;
+  background-color: transparent;
+  text-align: center;
+}
+#fullpage img{
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
 }

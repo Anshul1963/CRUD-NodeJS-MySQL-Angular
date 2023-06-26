@@ -1,5 +1,6 @@
 <div class="container">
     <p>LIST OF USERS</p>
+    <div id="fullpage" [style.display]="displayA" (click)="hide()"> <img src="http://localhost:8080/assets/{{URL}}"></div>
 
  <!-- SEARCH BOX -->
     <form [formGroup] ="search">
@@ -13,31 +14,33 @@
             <option value="gender" name="searchBy">Gender</option>
             <option value="message" name="searchBy">Message</option>
         </select>
-        <input type="text" class ="form-control" placeholder="Search" formControlName="searchInput" (input)="onSubmit()">
+        <input type="text" dataclass ="form-control" placeholder="Search" formControlName="searchInput" (input)="onSubmit()">
     </form>
 
 
     <table class="table">
         <thead>
             <tr class="table-heading">
-                <th style="width:10%"><button (click)="sort('name',nameNextOrder)">NAME</button><span *ngIf="nameNextOrder == 'asc' && SortBy == 'name' ">↓</span><span *ngIf="nameNextOrder == 'desc' && SortBy == 'name'">↑</span></th>
+                <th>IMAGE</th>
+                <th style="width:8%"><button (click)="sort('name',nameNextOrder)">NAME</button><span *ngIf="nameNextOrder == 'asc' && SortBy == 'name' ">↓</span><span *ngIf="nameNextOrder == 'desc' && SortBy == 'name'">↑</span></th>
 
-                <th style="width:17%"><button (click)="sort('email',emailNextOrder)">EMAIL</button><span *ngIf="emailNextOrder == 'asc' && SortBy == 'email' ">↓</span><span *ngIf="emailNextOrder == 'desc' && SortBy == 'email'">↑</span></th>
+                <th style="width:15%"><button (click)="sort('email',emailNextOrder)">EMAIL</button><span *ngIf="emailNextOrder == 'asc' && SortBy == 'email' ">↓</span><span *ngIf="emailNextOrder == 'desc' && SortBy == 'email'">↑</span></th>
 
-                <th style="width:08%"><button (click)="sort('mobile',mobileNextOrder)">MOBILE</button><span *ngIf="mobileNextOrder == 'asc' && SortBy == 'mobile' ">↓</span><span *ngIf="mobileNextOrder == 'desc' && SortBy == 'mobile'">↑</span></th>
+                <th style="width:10%"><button (click)="sort('mobile',mobileNextOrder)">MOBILE</button><span *ngIf="mobileNextOrder == 'asc' && SortBy == 'mobile' ">↓</span><span *ngIf="mobileNextOrder == 'desc' && SortBy == 'mobile'">↑</span></th>
 
                 <th style="width:12%"><button (click)="sort('address',addressNextOrder)">ADDRESS</button><span *ngIf="addressNextOrder == 'asc' && SortBy == 'address' ">↓</span><span *ngIf="addressNextOrder == 'desc' && SortBy == 'address'">↑</span></th>
 
-                <th style="width:08%"><button (click)="sort('state',stateNextOrder)">STATE</button><span *ngIf="stateNextOrder == 'asc' && SortBy == 'state' ">↓</span><span *ngIf="stateNextOrder == 'desc' && SortBy == 'state'">↑</span></th>
+                <th style="width:09%"><button (click)="sort('state',stateNextOrder)">STATE</button><span *ngIf="stateNextOrder == 'asc' && SortBy == 'state' ">↓</span><span *ngIf="stateNextOrder == 'desc' && SortBy == 'state'">↑</span></th>
 
                 <th style="width:10%"><button (click)="sort('gender',genderNextOrder)">GENDER</button><span *ngIf="genderNextOrder == 'asc' && SortBy == 'gender' ">↓</span><span *ngIf="genderNextOrder == 'desc' && SortBy == 'gender'">↑</span></th>
 
                 <th style="width:18%"><button (click)="sort('message',messageNextOrder)">MESSAGE</button><span *ngIf="messageNextOrder == 'asc' && SortBy == 'message' ">↓</span><span *ngIf="messageNextOrder == 'desc' && SortBy == 'message'">↑</span></th>
-                <th style="width:12%">ACTION</th>
+                <th style="width:11%">ACTION</th>
             </tr>
         </thead>
         <tbody>
             <tr class="table-data" *ngFor="let user of users">
+                <td class="gallery"><img id="img" (click)="large(user.image)" src="http://localhost:8080/assets/{{user.image}}" alt="Not Available"> </td>
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.mobile}}</td>

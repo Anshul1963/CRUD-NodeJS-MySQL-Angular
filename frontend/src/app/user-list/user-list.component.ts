@@ -1,5 +1,3 @@
-import { Observable } from "rxjs";
-import { User } from "../user";
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,9 +9,28 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ["./user-list.component.css"]
 })
 export class UserListComponent implements OnInit {
-  users: Observable<User[]>;
+  displayA:any="none";
+  URL:any;
+
+  users: any;
   pageNo :number = 1;
   totalPages: number;
+  
+
+  constructor(private http: HttpClient,private router: Router) { }
+
+  ngOnInit() {
+    this.reloadData();
+  }
+  
+  large(url:any){
+    this.displayA = "block";
+    this.URL = url;
+    console.log(url);
+  }
+  hide(){
+    this.displayA = "none";
+  }
 
   search = new FormGroup({
     searchBy: new FormControl('',[Validators.required]),
@@ -21,14 +38,9 @@ export class UserListComponent implements OnInit {
   })
 
   get searchBy(){
-    return this.addForm.get('searchBy');
+    return this.search.get('searchBy');
   }
 
-  constructor(private http: HttpClient,private router: Router) {}
-
-  ngOnInit() {
-    this.reloadData();
-  }
 
   reloadData() {
     this.http.get("http://localhost:8080/api/user/"+this.pageNo).subscribe((resultData: any)=>{
@@ -43,13 +55,14 @@ export class UserListComponent implements OnInit {
     if(this.search.value.searchInput === ""){
       this.reloadData();
     }
-     if(this.search.value.searchBy.length !== 0 && this.search.value.searchInput !== ""){ 
+    if(this.search.value.searchBy.length !== 0 && this.search.value.searchInput.length > 2){ 
       this.http.get("http://localhost:8080/api/user/"+this.search.value.searchBy+"/"+this.search.value.searchInput).subscribe((resultData:any)=>{
         console.log(resultData);
         this.users = resultData.data;
       })
     }
   }
+
 
  //PREVIOUS PAGE
   reloadDataPrev() {
@@ -61,6 +74,7 @@ export class UserListComponent implements OnInit {
       }) 
     }
   }
+
 
  //NEXT PAGE
   reloadDataNext() {
@@ -89,6 +103,7 @@ export class UserListComponent implements OnInit {
     }
   }
 
+
  // UPDATE USER
   updateUser(id: string){
     this.router.navigate(['update', id]);
@@ -105,7 +120,7 @@ export class UserListComponent implements OnInit {
   messageNextOrder = 'asc';
   SortBy = '';
   sort(sortBy: string,order:string){
-    this.http.post("http://localhost:8080/api/user/sorting/"+sortBy+"/"+order).subscribe((result) => {
+    this.http.post("http://localhost:8080/api/user/sorting/"+sortBy+"/"+order,'').subscribe((result:any) => {
       this.SortBy = sortBy;
       this.users = result.data;
       if(sortBy == 'name' && order == 'asc'){

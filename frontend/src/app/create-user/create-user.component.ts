@@ -13,6 +13,9 @@ export class CreateUserComponent implements OnInit {
 
   user: User = new User();
   submitted = false;
+  formData = new FormData();
+  imageFile;
+
   addForm = new FormGroup({
     name: new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z]+$')]),
     email: new FormControl('',[Validators.required,Validators.email]),
@@ -22,6 +25,7 @@ export class CreateUserComponent implements OnInit {
     gender: new FormControl('',[Validators.required]),
     message: new FormControl('',[Validators.required]),
     newsletter: new FormControl(),
+    image: new FormControl(),
   })
 
   get name(){
@@ -49,28 +53,29 @@ export class CreateUserComponent implements OnInit {
     return this.addForm.get('newsletter');
   }
 
+  uploadFile(event: any){
+     this.imageFile = event.target.files ? event.target.files[0] : '';
+    // console.log(this.imageFile);
+  }
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
-  newUser(): void {
-    this.submitted = false;
-    this.user = new User();
-  }
 
-  save() {
-    this.http.post("http://localhost:8080/api/user/add",this.addForm.value).subscribe((resultData:any) => {
+  onSubmit(event : any) {
+    event.preventDefault();
+    this.formData = new FormData(event.target);
+    this.formData.append('location', this.imageFile.name);
+    
+    console.log(this.formData.get('image'));
+    // console.log(this.formData.get('location'));
+
+    this.http.post("http://localhost:8080/api/user/add",this.formData).subscribe((resultData:any) => {
       console.log(resultData);
       this.gotoList();
     })
-  }
-
-  onSubmit() {
-    // console.log(this.addForm.value);
-    this.submitted = true;
-    this.save();    
+       
   }
 
   gotoList() {

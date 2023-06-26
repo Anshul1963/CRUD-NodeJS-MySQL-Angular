@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RegistrationComponent implements OnInit {
   error:string;
+  privacy:any;
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -20,6 +21,7 @@ export class RegistrationComponent implements OnInit {
     email: new FormControl('',[Validators.required]),
     userName: new FormControl('',[Validators.required]),
     password: new FormControl('',[Validators.required]),
+    agree: new FormControl('',[Validators.required]),
   })
 
   get email(){
@@ -31,10 +33,18 @@ export class RegistrationComponent implements OnInit {
   get password(){
     return this.registration.get('password');
   }
+  get agree(){
+    return this.registration.get('agree');
+  }
 
+  // Data:any;
   onSubmit(){
-      this.http.post("http://localhost:8080/api/user/register/"+this.registration.value.email+"/"+this.registration.value.userName+"/"+this.registration.value.password).subscribe(data => {
+    // console.log(this.registration.value.agree);
+    this.privacy = this.registration.value.agree;
+    if(this.privacy){
+      this.http.post("http://localhost:8080/api/user/register/"+this.registration.value.email+"/"+this.registration.value.userName+"/"+this.registration.value.password,'').subscribe((data:any) => {
         console.log(data);
+        // this.Data = data;
         if(data.result === "Account Created"){
           this.router.navigate(['/login']);
         }
@@ -42,6 +52,7 @@ export class RegistrationComponent implements OnInit {
           this.error = "User Already Existed !";
         }
       },error=>console.log(error));
+    }
   }
 
 }
